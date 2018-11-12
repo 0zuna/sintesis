@@ -1,0 +1,29 @@
+<template>
+	<div class="carousel-item">
+		<main role="main" class="container opinion">
+			<h1 class="mt-5">Opinión</h1>
+			<div>
+				<select className="image-picker masonry show-html" multiple="multiple">
+					<option v-for="sakura in this.$root.opiniones" :key="sakura.idEditorial" :data-img-src="'assets/img/opinion/'+sakura.Titulo.toLowerCase()+'.jpg'" data-img-label="" :value="sakura.idEditorial" selected=true></option>
+				</select>
+			</div>
+		</main>
+	</div>
+</template>
+<script>
+	export default{ 
+		created(){
+			setTimeout(function(){
+			$("select").imagepicker({show_label: false});
+					},1000);
+		},
+		methods:{
+			go: function(){
+				//pdfMake.createPdf(docDefinition).print();
+				//pdfMake.createPdf(docDefinition).download();
+
+
+			}
+		}
+	}
+</script>

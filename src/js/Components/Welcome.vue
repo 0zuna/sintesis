@@ -16,7 +16,7 @@
 		methods:{
 			go: function(){
 				$(".welcome").fadeOut("slow",function(){
-					$(".step-one").fadeIn("slow");
+					$(".main").fadeIn("slow");
 				});
 			}
 		}
