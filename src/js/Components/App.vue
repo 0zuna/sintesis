@@ -1,17 +1,17 @@
 <template>
 	<div>
-		<div v-if="$root.loading" :style="{position: 'absolute',top: '50%',left: '50%',transform: 'translate(-50%, -50%)'}">
+		<div class="loading" :style="{position: 'absolute',top: '50%',left: '50%',transform: 'translate(-50%, -50%)'}">
 			<h4>Cargando</h4>
 		</div>
 		<welcome v-if="$root.welcome"></welcome>
 		<div class="hide main">
 			<a href="javascript:void(0)" :style="{position:'fixed', right:10+'px',padding:10+'px','z-index': 1}" @click.prevent="go">CONTINUAR</a><br />
-			<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+			<div id="carouselMain" class="carousel slide" data-ride="carousel">
 				<div class="carousel-inner">
 					<one></one>
 					<sintesis v-if="$root.sintesis"></sintesis>
 					<opinion v-if="$root.opinion"></opinion>
-					<carton v-if="$root.carton"></carton>
+					<cartoon v-if="$root.cartoon"></cartoon>
 				</div>
 			</div>
 		</div>
@@ -26,13 +26,21 @@
 	export default{
 		mounted(){
 			$('.carousel').carousel({pause:true,interval:false,wrap: false});
+			this.$root.clienta=this.sakura
 		},
+		props: ['sakura'],
 		methods:{
 			go: function(){
-				if($(".carousel-inner > div").length==$('div.active').index() + 1){
+				if($(".carousel-item").length==$('div.carousel-item').index($('div.carousel-item.active')) + 1){
 					this.$root.sakura()
 				}else{
-					$('.carousel').carousel('next')
+					var index=$('div.carousel-item').index($('div.carousel-item.active')) + 1;
+					//$('.carousel').carousel('next')
+					$('div.carousel-item.active').addClass('carousel-item-left')
+					setTimeout(function(){
+						$('.carousel-item').removeClass("active carousel-item-left")
+						$('.carousel-item').eq(index).addClass("active")
+					},500);
 				}
 			}
 		}
