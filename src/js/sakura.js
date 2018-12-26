@@ -15,20 +15,8 @@ module.exports = {
 			fontSize: 15,
 			color: 'white',
 			bold: true,
-			absolutePosition:{x:40,y:78},
+			absolutePosition:{x:253,y:100},
 		 },
-		{
-			stack:[
-				'SÍNTESIS',
-				{text: 'INFORMATIVA', style: {color: '#FF3399'}},
-			],
-			style: {
-				fontSize: 36,
-				bold: true,
-				alignment: 'center',
-			},
-			margin: [0, 100, 0, 10]
-		},
 		{
 			stack:[
 				'',
@@ -39,14 +27,14 @@ module.exports = {
 				bold: true,
 				alignment: 'center',
 			},
-			margin: [0, 100, 0, 10],
+			margin: [0, 20, 0, 0],
 		},
 	],
 	columns: [
 		{
 		image: '',
 		width: 530,
-		//absolutePosition:{x:0,y:0}
+		margin:[0,0,0,20],
 		},
 		{table: {
 			widths: ['*', 400],
@@ -56,6 +44,13 @@ module.exports = {
 		}
 	],
 	opinion:[
+		{
+			image: '',
+			width: 530,
+			margin:[0,0,0,20],
+		}
+	],
+	cartoons:[
 		{
 			image: '',
 			width: 530,

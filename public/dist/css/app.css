@@ -6347,7 +6347,6 @@ html, body {
   color: #636b6f;
   font-family: 'Nunito', sans-serif;
   font-weight: 200;
-  height: 100vh;
   margin: 0; }
 
 html {
@@ -6355,8 +6354,7 @@ html {
   min-height: 100%; }
 
 body {
-  margin-bottom: 60px;
-  /* Margin bottom by footer height */ }
+  margin-bottom: 60px; }
 
 .footer {
   position: fixed;
@@ -6373,7 +6371,7 @@ body {
 /* Not required for template or sticky footer method. */
 .container {
   width: auto;
-  max-width: 680px;
+  max-width: 80%;
   padding: 0 15px; }
 
 .hide {
@@ -6388,3 +6386,10 @@ ul.thumbnails.image_picker_selector li .thumbnail.selected {
 ul.thumbnails.image_picker_selector li {
   margin: 5px 30px 30px 5px;
   float: left; }
+
+.thumbnails.image_picker_selector img {
+  width: 280px; }
+
+@media screen and (max-width: 640px) {
+  .thumbnails.image_picker_selector img {
+    width: 100%; } }
