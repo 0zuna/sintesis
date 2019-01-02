@@ -13,21 +13,20 @@ module.exports = {
 		 {
 			text:fecha,
 			fontSize: 15,
-			color: 'white',
-			bold: true,
-			absolutePosition:{x:253,y:100},
+			color: 'black',
+			bold: false,
+			alignment: 'center',
 		 },
 		{
 			stack:[
 				'',
-				{text: '', style: {color: 'black',bold:false}},
+				{text: '', style: {color: 'black',fontSize:50}},
 			],
 			style: {
-				fontSize: 12,
-				bold: true,
+				fontSize: 40,
 				alignment: 'center',
 			},
-			margin: [0, 20, 0, 0],
+			margin: [0, 160, 0, 0],
 		},
 	],
 	columns: [

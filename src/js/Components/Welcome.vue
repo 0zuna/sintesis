@@ -2,12 +2,9 @@
 	<div>
 		<main role="main" class="container welcome">
 			<h1 class="mt-5">Bienvenido</h1>
-			<p class="lead">Asistente para creación de Sintesis</p>
+			<p class="lead">Asistente para creación de Síntesis</p>
 			<p>Se le guiará a través de varios pasos para ayudarle a crear su documento.</p>
-			<p>
-				para iniciar el proceso de click
-				<a href="javascrip:void(0)" @click.prevent="go">aqui</a>.
-			</p>
+			<button type="button" class="btn btn-outline-dark btn-lg btn-block" @click.prevent="go" :style="">Comenzar</button>
 		</main>
 	</div>
 </template>

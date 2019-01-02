@@ -3,7 +3,7 @@
 		<main role="main" class="container sintesis">
 			<h1 class="mt-5">Carton</h1>
 			<p class="lead">
-				Elija su contenido Cartones
+				Elije tus Cartones
 			</p>
 			<div>
 				<select class="image-picker select-cartoon show-html" multiple="multiple">

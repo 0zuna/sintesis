@@ -1,7 +1,5 @@
 require("@babel/polyfill")
 require('./bootstrap')
-window.sakura =require('./sakura')
-window.recurso =require('./recurso')
 import Vue from 'vue'
 
 Vue.component('holi', require('./Components/App.vue').default);
@@ -10,15 +8,14 @@ Vue.component('one', require('./Components/One.vue').default);
 Vue.component('sintesis', require('./Components/Sintesis.vue').default);
 Vue.component('opinion', require('./Components/Opinion.vue').default);
 Vue.component('cartoon', require('./Components/Carton.vue').default);
-
 new Vue({
 	el: '#app',
 	data:{
 		clienta:'',
 		welcome:false,
-		portada:false,
+		portada:true,
 		columnas:false,
-		sintesis:true,
+		sintesis:false,
 		opinion:false,
 		cartoon:false,
 		pdf:{
@@ -42,26 +39,26 @@ new Vue({
 			notas:[],
 		}
 	},
-	async created(){
+	async mounted(){
 		/*
-		  *cover
+		  *covers
 		  */
-		sakura.cover[0].image=await this.file(this.url+'/assets/img/pgjcdmx/portada.jpg');
-		sakura.cover[2].stack[0]="Procuraduría General de Justicia de la Ciudad de México"
-		sakura.cover[2].stack[1].text="Dirección General de Comunicación Social"
-		/*
-		  *opinion
-		  */
-		sakura.opinion[0].image=await this.file(this.url+'/assets/img/pgjcdmx/columnas_opinion.jpg')
-		/*
-		  *cartoons
-		  */
-		sakura.cartoons[0].image=await this.file(this.url+'/assets/img/pgjcdmx/cartoon.jpg')
-		/*
-		  *columnas
-		  */
-		sakura.columns[0].image = await this.file(this.url+'/assets/img/pgjcdmx/ocho_columnas.jpg');
-		await axios.get(this.url+'/'+this.clienta+'/data').then((response)=>{
+		if(recurso[this.clienta+'portada.jpg']){
+			sakura.cover[0].image='data:image/jpeg;base64,'+recurso[this.clienta+'portada.jpg']
+			sakura.opinion[0].image='data:image/jpeg;base64,'+recurso[this.clienta+'columnas_opinion.jpg']
+			sakura.cartoons[0].image='data:image/jpeg;base64,'+recurso[this.clienta+'cartoon.jpg']
+			sakura.columns[0].image = 'data:image/jpeg;base64,'+recurso[this.clienta+'ocho_columnas.jpg']
+		}else{
+			sakura.cover[0].image='data:image/jpeg;base64,'+recurso['portada.jpg']
+			sakura.opinion[0].image='data:image/jpeg;base64,'+recurso['columnas_opinion.jpg']
+			sakura.cartoons[0].image='data:image/jpeg;base64,'+recurso['cartoon.jpg']
+			sakura.columns[0].image = 'data:image/jpeg;base64,'+recurso['ocho_columnas.jpg']
+			sakura.cover[2].stack[0]="SÍNTESIS INFORMATIVA";
+			sakura.cover[2].stack[1].text=this.clienta.toUpperCase();
+
+		}
+
+		await axios.get(this.clienta+'/data').then((response)=>{
 			this.columns=response.data.columnas
 			this.opiniones=response.data.opinion
 			this.cartoons=response.data.cartoons
@@ -116,7 +113,7 @@ new Vue({
 					}
 					col[1].table.body.push(holi);
 				}
-				if(this.sintesis)
+				if(this.sintesis || this.opinion)
 					col[1].pageBreak='after';
 				this.pdf.content.push(col);
 			}
@@ -197,21 +194,19 @@ new Vue({
 				this.pdf.content.push(cartoons)
 			}
 
+			//pdfMake.createPdf(this.pdf).open()
+			var self = this;
+			setTimeout(function(){
+				pdfMake.createPdf(self.pdf).download('Síntesis.pdf', function(){
+						$('.loading').hide()
+						$('.welcome').show()
+						$('.carousel-item').removeClass("active")
+						$('#step').addClass("active")
+						self.pdf.content=[]
+					},null
+				)
+			},500);
 
-
-			pdfMake.createPdf(this.pdf).open()
-			$('.loading').hide()
-			$('.welcome').show()
-			$('.carousel-item').removeClass("active")
-			$('#step').addClass("active")
-			//$('.carousel').carousel(0)
-			/*pdfMake.createPdf(this.pdf).download('Sintesis.pdf', function(){
-					$('.loading').hide()
-					$('.welcome').show()
-					$('.carousel').carousel(0)
-				},null
-			)*/
-			this.pdf.content=[]
 		}
 	}
   //render: h => h(App)

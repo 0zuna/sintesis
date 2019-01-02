@@ -1,5 +1,7 @@
 window._ = require('lodash');
 window.Popper = require('popper.js').default;
+window.recurso = require('./recurso')
+window.sakura = require('./sakura')
 
 try {
     window.$ = window.jQuery = require('jquery');

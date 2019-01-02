@@ -5,7 +5,7 @@
 		</div>
 		<welcome v-if="$root.welcome"></welcome>
 		<div class="hide main">
-			<a href="javascript:void(0)" :style="{position:'fixed', right:10+'px',padding:10+'px','z-index': 1}" @click.prevent="go">CONTINUAR</a><br />
+			<button type="button" class="btn btn-outline-dark btn-lg" @click.prevent="go" :style="{position:'fixed', right:10+'px',padding:20+'px','z-index': 1}">CONTINUAR</button>
 			<div id="carouselMain" class="carousel slide" data-ride="carousel">
 				<div class="carousel-inner">
 					<one></one>
@@ -17,7 +17,7 @@
 		</div>
 		<footer class="footer">
 			<div class="container" :style="{position:'absolute',right:0+'px'}">
-				<span class="text-muted">Powered By The Ninja.</span>
+				<!--span class="text-muted">Powered By The Ninja.</span-->
 			</div>
 		</footer>
 	</div>
