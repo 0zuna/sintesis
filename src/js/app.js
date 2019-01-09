@@ -137,11 +137,19 @@ new Vue({
 								}
 							]
 						}
+						if(this.portada)
+							sintec.stack[0].pageBreak='before';
 						if(x>0)
 							sintec.pageBreak='before'
 						sintesis.push(sintec)
 					}
-					sintesis.push({stack:[{text: this.sintetizador.notas[x].Titulo,bold: true},{text: this.sintetizador.notas[x].Texto}],margin: [0, 20, 0, 0]})
+					sintesis.push({stack:[{text: this.sintetizador.notas[x].Titulo,bold: true},{text: this.sintetizador.notas[x].Texto,alignment:'justify'}],margin: [0, 20, 0, 0]})
+					sintesis[sintesis.length-1].stack.push(
+							{text:[
+						{text:this.sintetizador.notas[x].StringName,link:'https://www.gaimpresos.com'+this.sintetizador.notas[x].pdf,color:'blue'},
+						'  '+this.sintetizador.notas[x].Autor,
+						'  Pag.'+this.sintetizador.notas[x].PaginaPeriodico
+						],regular: true,fontSize:10})
 					$.each(this.sintetizador.notas[x].refs,function (k,v) {
 						sintesis[sintesis.length-1].stack.push(
 								{text:[
