@@ -17,7 +17,7 @@
 		</div>
 		<footer class="footer">
 			<div class="container" :style="{position:'absolute',right:0+'px'}">
-				<!--span class="text-muted">Powered By The Ninja.</span-->
+				<span class="text-muted">Powered By The GA</span>
 			</div>
 		</footer>
 	</div>

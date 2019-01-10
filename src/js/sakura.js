@@ -20,13 +20,13 @@ module.exports = {
 		{
 			stack:[
 				'',
-				{text: '', style: {color: 'black',fontSize:50}},
+				{text: '', style: {color: 'black',fontSize:30}},
 			],
 			style: {
 				fontSize: 40,
 				alignment: 'center',
 			},
-			margin: [0, 160, 0, 0],
+			margin: [0, 160, 0, 230],
 		},
 	],
 	columns: [

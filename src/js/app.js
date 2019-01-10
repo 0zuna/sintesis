@@ -137,10 +137,8 @@ new Vue({
 								}
 							]
 						}
-						if(this.portada)
-							sintec.stack[0].pageBreak='before';
 						if(x>0)
-							sintec.pageBreak='before'
+							sintec.stack[0].pageBreak='before';
 						sintesis.push(sintec)
 					}
 					sintesis.push({stack:[{text: this.sintetizador.notas[x].Titulo,bold: true},{text: this.sintetizador.notas[x].Texto,alignment:'justify'}],margin: [0, 20, 0, 0]})
